@@ -665,6 +665,26 @@ function preparePrint() {
     }, 500);
 }
 
+// Helper function to recreate Node instance from plain object
+function recreateNode(nodeData) {
+    // Create a new Node instance with the basic properties
+    const node = new Node(
+        nodeData.id,
+        nodeData.x,
+        nodeData.y,
+        nodeData.text,
+        nodeData.color,
+        nodeData.parentId
+    );
+    
+    // Copy any additional properties that might exist
+    node.width = nodeData.width || 150;
+    node.height = nodeData.height || 50;
+    node.children = [...(nodeData.children || [])];
+    
+    return node;
+}
+
 loadBtn.addEventListener('click', () => {
     const input = document.createElement('input');
     input.type = 'file';
@@ -679,9 +699,13 @@ loadBtn.addEventListener('click', () => {
             try {
                 const data = JSON.parse(event.target.result);
                 
-                // Load data
-                nodes = data.nodes;
+                // Recreate nodes as proper Node instances
+                nodes = data.nodes.map(nodeData => recreateNode(nodeData));
+                
+                // Load connections
                 connections = data.connections;
+                
+                // Load view settings
                 offsetX = data.offsetX || 0;
                 offsetY = data.offsetY || 0;
                 scale = data.scale || 1;
