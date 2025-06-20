@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mind Map Creator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Mind Map Creator</h1>
+            <div class="toolbar">
+                <button id="add-node-btn" title="Add Root Node"><i class="fas fa-plus-circle"></i> Add Root Node</button>
+                <button id="add-child-btn" title="Add Child Node" disabled><i class="fas fa-sitemap"></i> Add Child Node</button>
+                <button id="delete-node-btn" title="Delete Node" disabled><i class="fas fa-trash"></i> Delete Node</button>
+                <button id="clear-btn" title="Clear All"><i class="fas fa-broom"></i> Clear All</button>
+                <button id="save-btn" title="Save Mind Map"><i class="fas fa-save"></i> Save</button>
+                <button id="load-btn" title="Load Mind Map"><i class="fas fa-upload"></i> Load</button>
+                <button id="print-btn" title="Print Mind Map"><i class="fas fa-print"></i> Print</button>
+            </div>
+        </header>
+        
+        <main>
+            <div class="canvas-container">
+                <canvas id="mind-map-canvas"></canvas>
+            </div>
+            
+            <div class="node-editor" id="node-editor">
+                <h3>Edit Node</h3>
+                <div class="form-group">
+                    <label for="node-text">Text:</label>
+                    <input type="text" id="node-text" placeholder="Enter node text">
+                </div>
+                <div class="form-group">
+                    <label for="node-color">Color:</label>
+                    <input type="color" id="node-color" value="#4CAF50">
+                </div>
+                <div class="buttons-container">
+                    <button id="apply-changes-btn">Apply Changes</button>
+                    <button id="cancel-edit-btn">Cancel</button>
+                </div>
+            </div>
+        </main>
+        
+        <div class="help-panel">
+            <h3>Instructions</h3>
+            <ul>
+                <li>Click "Add Root Node" to create a new mind map node</li>
+                <li>Select a node and click "Add Child Node" to create a child</li>
+                <li>Double-click on a node to edit its content</li>
+                <li>Drag nodes to reposition them</li>
+                <li>Use the "Delete Node" button to remove a selected node and its children</li>
+                <li>Click "Print" to create a printable version of your mind map</li>
+            </ul>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
